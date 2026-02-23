@@ -1,16 +1,154 @@
 :: StoryTitle
-Twine Demo 2
+twine minigame 3
 
 
 :: StoryData
 {
-  "ifid": "F7A58FA1-A989-45F8-8A67-32910EB9EAFE",
+  "ifid": "9AB4A0E7-1832-46AD-AB34-B8AF6199130B",
   "format": "SugarCube",
   "format-version": "2.37.3",
-  "start": "rename me",
+  "start": "Untitled Passage",
   "zoom": 1
 }
 
 
-:: rename me {"position":"600,250","size":"100,100"}
+:: \ countine walking {"position":"700,1900","size":"100,100"}
 
+
+
+:: No {"position":"600,1700","size":"100,100"}
+Wait you need broccoli and cheese
+[[go back-> countine walking]]
+
+
+:: Trip {"position":"525,2025","size":"100,100"}
+While walking away from the stalls you trip and fall into mud.
+You lose $13
+<<set $money to $money - 13
+
+>>
+<<if $money === 0>>
+You have no money
+<<else>>
+you have $ $money left
+<</if>>
+<!-- If the player has $0 left they will see you havbe no money, if they have more than 0 they will see you have however much money they have. -->
+[img["./images/New Piskel-1.png (9).png"]]
+HAHAH I told you, that you would regret buying the broccoli!
+
+''bad ending''
+
+
+:: Untitled Passage {"position":"800,300","size":"100,100"}
+!Shops
+
+You're at your local farmers market. There's many different shops selling various goods. 
+Check your [[shopping list]] to see what to buy.
+
+<<set $money to 35>>
+
+
+:: Yes {"position":"400,1700","size":"100,100"}
+[img["./images/New Piskel-1.png (9).png"]]
+
+Hey don't buy broccoli, buy cauliflower instead.
+
+[img["./images/New Piskel-3.png (5).png"]]
+Mind your business, and broccoli is way better than cauliflower. Especially with cheese!
+
+[[buy]] | [[don't]]
+
+
+
+:: buy {"position":"400,1900","size":"100,100"}
+[img["./images/New Piskel-3.png (5).png"]]
+Do you still want both?
+Yes, okay that's $12
+<<set $money to $money - 12>>
+you now have $ $money
+
+[img["./images/New Piskel-1.png (9).png"]]
+Your're going to regret this
+
+[[head home->Trip]]
+
+
+:: countine walking {"position":"500,1500","size":"100,100"}
+[img["./images/New Piskel-3.png (5).png"]]
+Hello do you want to buy some broccoli and cheese for $12
+[[Yes]] [[No]]
+
+
+:: don't {"position":"200,1900","size":"100,100"}
+[img["./images/New Piskel-3.png (5).png"]]
+I'll just buy the cheese.
+okay that's $8
+<<set $money to $money - 8>>
+you now have $ $money
+
+[[head home]]
+
+
+:: don't pick up {"position":"800,1200","size":"100,100"}
+you still have $money
+[[countine walking]] 
+
+
+:: head home {"position":"400,2025","size":"100,100"}
+You make it home safely with all your goods
+
+''good ending''
+
+
+:: head over {"position":"700,725","size":"100,100"}
+[img["./images/New Piskel-2.png (9).png"]]
+
+Hello would you like to buy some bread for $10
+                        [[yes]] | [[no]]
+
+
+:: head to stand {"position":"600,1100","size":"100,100"}
+Look there's 10 dollars on the ground.
+		[[pick up]] | [[don't pick up]]
+        
+        <!-- it doesn't matter if the money is picked up or not, You just will have no money if you pick it up and buy the broccoli-->
+
+
+:: no {"position":"900,800","size":"100,100"}
+wait you need bread 
+[[go back->head over]]
+
+
+:: pick up {"position":"500,1300","size":"100,100"}
+<<set $money to $money +  10>>
+
+you now have $ $money
+
+[[countine walking]]
+
+
+:: shopping list {"position":"600,475","size":"100,100"}
+
+-cheese
+-bread
+-broccoli
+<<set $money to 35>>
+you have $ $money 
+
+[[stop looking]]
+
+
+:: stop looking {"position":"700,600","size":"100,100"}
+[img["./images/New Piskel-2.png (9).png"]]
+
+
+Look there's where you can get your bread. [[head over]]
+
+
+:: yes {"position":"600,900","size":"100,100"}
+<<set $money to $money -  10>>
+
+you now have $ $money
+
+You should go get your broccoli and cheese now, I think I see a stand which sells both.
+[[head to stand]]
